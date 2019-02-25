@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Spring } from 'react-spring/renderprops';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const Card = styled.div`
   height: 65vh;
@@ -37,6 +38,15 @@ const CardContainer = styled.div`
 `;
 
 const BreedsList = props => {
+  console.log(
+    'props.data, props.images :',
+    props.data,
+    props.images,
+    props.selectedCatData
+  );
+
+  
+
   const renderCard = () =>
     props.data.map((breed, idx) => {
       return (
@@ -46,7 +56,10 @@ const BreedsList = props => {
           to={{ opacity: 1 }}>
           {style => (
             <Link to="/catpage">
-              <Card bg={props.images[idx].url} style={style}>
+              <Card
+                bg={props.images[idx].url}
+                style={style}
+                onClick={() => selectCard(props.images[idx].breeds[0])}>
                 <CardText>{props.images[idx].breeds[0].name}</CardText>
               </Card>
             </Link>
@@ -63,4 +76,4 @@ const BreedsList = props => {
   );
 };
 
-export default BreedsList;
+export default BreedsList
