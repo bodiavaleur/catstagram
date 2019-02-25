@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Spring } from 'react-spring/renderprops';
 
 const Container = styled.section`
   grid-area: 1 / 1 / 5 span / 12 span;
@@ -14,6 +15,8 @@ const Avatar = styled.div`
   width: 150px;
   border: 1px solid #e8e8e8;
   border-radius: 100%;
+  background-image: url(${props => props.bg});
+  background-size: cover;
 `;
 
 const Name = styled.h2`
@@ -25,15 +28,13 @@ const Description = styled.p`
   color: black;
   font-size: 1em;
   font-family: Quicksand, Arial, Helvetica, sans-serif;
-  height: 80%;
-  overflow: scroll;
 `;
 
 const Details = styled.div`
   display: flex;
   margin-left: 4vw;
   flex-direction: column;
-  width: 30%;
+  width: 50%;
   height: 50%;
   position: relative;
 `;
@@ -45,18 +46,23 @@ const Hr = styled.hr`
 `;
 
 const CatDescripton = props => {
+  console.log('props.data', props.data);
+  const data = props.data.breeds[0];
+  const image = props.data.url;
+
   return (
-    <Container>
-      <Avatar />
-      <Details>
-        <Name>Cat</Name>
-        <Hr />
-        <Description>
-          The Abyssinian is easy to care for, and a joy to have in your home.
-          They’re affectionate cats and love both people and other animals.
-        </Description>
-      </Details>
-    </Container>
+    <Spring delay={100} from={{ opacity: 0 }} to={{ opacity: 1 }}>
+      {style => (
+        <Container style={style}>
+          <Avatar bg={image} />
+          <Details>
+            <Name>{data.name}</Name>
+            <Hr />
+            <Description>{data.description}</Description>
+          </Details>
+        </Container>
+      )}
+    </Spring>
   );
 };
 

@@ -2,13 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { Spring } from 'react-spring/renderprops';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 const Card = styled.div`
   height: 65vh;
   width: 30vw;
   position: relative;
-  border: 1px solid #e8e8e8;
+  border: 3px solid white;
   border-radius: 20px;
   margin: 1vw;
   background-image: url(${props => props.bg});
@@ -38,19 +37,11 @@ const CardContainer = styled.div`
 `;
 
 const BreedsList = props => {
-  console.log(
-    'props.data, props.images :',
-    props.data,
-    props.images,
-    props.selectedCatData
-  );
-
-  
-
   const renderCard = () =>
     props.data.map((breed, idx) => {
       return (
         <Spring
+          key={idx}
           config={{ tension: 120, friction: 14 }}
           from={{ opacity: 0 }}
           to={{ opacity: 1 }}>
@@ -59,7 +50,7 @@ const BreedsList = props => {
               <Card
                 bg={props.images[idx].url}
                 style={style}
-                onClick={() => selectCard(props.images[idx].breeds[0])}>
+                onClick={() => props.onCardClick(props.images[idx])}>
                 <CardText>{props.images[idx].breeds[0].name}</CardText>
               </Card>
             </Link>
@@ -67,6 +58,7 @@ const BreedsList = props => {
         </Spring>
       );
     });
+
   return (
     <CardContainer>
       {props.data.length > 0 && props.images.length === props.data.length
@@ -76,4 +68,4 @@ const BreedsList = props => {
   );
 };
 
-export default BreedsList
+export default BreedsList;

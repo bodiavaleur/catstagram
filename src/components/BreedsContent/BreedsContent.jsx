@@ -56,7 +56,7 @@ class BreedsContent extends Component {
         <BreedsList
           data={this.props.breedsData}
           images={this.props.breedsImages}
-          onCardClick={this.select}
+          onCardClick={this.selectCard}
         />
         <BreedPages onPageClick={this.fetchBreeds} />
       </FlexContainer>

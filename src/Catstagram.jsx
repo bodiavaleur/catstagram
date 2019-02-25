@@ -4,8 +4,6 @@ import AppHeader from './components/AppHeader/AppHeader';
 import BreedsContent from './components/BreedsContent/BreedsContent';
 import CatPage from './components/CatPage/CatPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { loadBreedsList } from './redux/actionCreators';
 
 const App = styled.main`
   display: grid;

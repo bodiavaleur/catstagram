@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import CatDescription from './CatDescription';
+import { connect } from 'react-redux';
 
 const CatPageContainer = styled.div`
   height: 100%;
@@ -9,12 +10,18 @@ const CatPageContainer = styled.div`
   grid-template-rows: repeat(12, 1fr);
 `;
 
-export default class CatPage extends Component {
+class CatPage extends Component {
   render() {
     return (
       <CatPageContainer>
-        <CatDescription />
+        <CatDescription data={this.props.selectedCatData} />
       </CatPageContainer>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  selectedCatData: state.selectedCatData
+});
+
+export default connect(mapStateToProps)(CatPage);
