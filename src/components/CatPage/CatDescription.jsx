@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import { Spring } from 'react-spring/renderprops';
 
 const Container = styled.section`
-  grid-area: 1 / 1 / 5 span / 12 span;
+  height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5vh;
   border-bottom: 1px solid #e8e8e8;
+  overflow: scroll;
 `;
 
 const Avatar = styled.div`

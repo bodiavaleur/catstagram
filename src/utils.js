@@ -9,13 +9,11 @@ export const getBreedsList = (page, cb) =>
     .then(res => res.data)
     .then(res => cb(res));
 
-export const getBreedsImg = (breedId, cb) =>
+export const getBreedsImg = (breedId, cb, limit) =>
   // FIXME: Can't change the size of image
   axios({
     method: 'get',
-    url:
-      'https://api.thecatapi.com/v1/images/search?size=small&breed_id=' +
-      breedId,
+    url: `https://api.thecatapi.com/v1/images/search?limit=${limit}&size=small&breed_id=${breedId}`,
     headers: { 'x-api-key': '9341df05-7f40-4cbd-9705-7af2cca054a9' }
   })
     .then(res => res.data)

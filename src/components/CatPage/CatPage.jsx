@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import CatDescription from './CatDescription';
 import { connect } from 'react-redux';
+import CatGallery from './CatGallery';
+import LazyLoad from 'react-lazyload';
 
 const CatPageContainer = styled.div`
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 class CatPage extends Component {
@@ -15,6 +16,9 @@ class CatPage extends Component {
     return (
       <CatPageContainer>
         <CatDescription data={this.props.selectedCatData} />
+        <LazyLoad>
+          <CatGallery breed={this.props.selectedCatData.breeds[0].id} />
+        </LazyLoad>
       </CatPageContainer>
     );
   }
