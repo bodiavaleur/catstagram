@@ -16,8 +16,9 @@ const PaginationWrapper = styled.div`
     border-radius: 100%;
     outline: none;
     font-family: Quicksand, Arial, Helvetica, sans-serif;
-    font-size: 1.5em;
+    font-size: 1em;
     cursor: pointer;
+    margin: 3vh 0;
   }
 
   .pagination__page,
@@ -25,9 +26,9 @@ const PaginationWrapper = styled.div`
   .next,
   .break {
     display: inline-flex;
-    height: 50px;
-    width: 50px;
-    margin: 0 5px;
+    height: 35px;
+    width: 35px;
+    margin: 0 2px;
   }
 `;
 
@@ -37,7 +38,6 @@ const BreedPages = props => {
       <ReactPaginate
         previousLabel={'<'}
         nextLabel={'>'}
-        breakLabel={'...'}
         pageCount={22}
         marginPagesDisplayed={1}
         pageRangeDisplayed={2}

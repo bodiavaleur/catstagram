@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { getBreedsImg } from '../../utils';
 
@@ -24,21 +24,26 @@ const Image = styled.img`
   }
 `;
 
-const CatGallery = props => {
-  return (
-    <Gallery>
-      {/* Test */}
-      <Image src="https://via.placeholder.com/150" />
-      <Image src="https://via.placeholder.com/150" />
-      <Image src="https://via.placeholder.com/150" />
-      <Image src="https://via.placeholder.com/150" />
-      <Image src="https://via.placeholder.com/150" />
-      <Image src="https://via.placeholder.com/150" />
-      <Image src="https://via.placeholder.com/150" />
-      <Image src="https://via.placeholder.com/150" />
-      <Image src="https://via.placeholder.com/150" />
-    </Gallery>
-  );
-};
+export default class CatGallery extends Component {
+  constructor(props) {
+    super(props);
 
-export default CatGallery;
+    this.state = {
+      images: []
+    };
+  }
+
+  componentWillMount() {
+    getBreedsImg(this.props.breed, img => this.setState({ images: img }), 100);
+  }
+
+  render() {
+    const images = this.state.images;
+    console.log('images :', images);
+    return (
+      <Gallery>
+        {images.length > 0 ? images.map(url => <Image src={url.url} />) : null}
+      </Gallery>
+    );
+  }
+}

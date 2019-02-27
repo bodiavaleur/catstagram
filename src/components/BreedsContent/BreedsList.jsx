@@ -15,6 +15,11 @@ const Card = styled.div`
   background-position: center center;
   box-shadow: 4px 10px 20px #aaa;
   cursor: pointer;
+
+  @media only screen and (max-width: 1024px) {
+    width: 90vw;
+    height: 30vh;
+  }
 `;
 
 const CardText = styled.span`
@@ -34,6 +39,9 @@ const CardText = styled.span`
 
 const CardContainer = styled.div`
   display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 5vh;
 `;
 
 const BreedsList = props => {

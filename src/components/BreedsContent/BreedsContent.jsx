@@ -14,10 +14,9 @@ import {
 
 const FlexContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  height: 100%;
 `;
 
 class BreedsContent extends Component {

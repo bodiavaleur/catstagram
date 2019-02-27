@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import CatDescription from './CatDescription';
 import { connect } from 'react-redux';
 import CatGallery from './CatGallery';
-import LazyLoad from 'react-lazyload';
 
 const CatPageContainer = styled.div`
   display: flex;
@@ -16,9 +15,7 @@ class CatPage extends Component {
     return (
       <CatPageContainer>
         <CatDescription data={this.props.selectedCatData} />
-        <LazyLoad>
-          <CatGallery breed={this.props.selectedCatData.breeds[0].id} />
-        </LazyLoad>
+        <CatGallery breed={this.props.selectedCatData.breeds[0].id} />
       </CatPageContainer>
     );
   }
